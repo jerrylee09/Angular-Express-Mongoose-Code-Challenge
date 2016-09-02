@@ -1,14 +1,13 @@
 <!doctype html>
 <html>
   <head>
-    <title>Omicron Intro to Mongoose with Books</title>
+    <title>Heros</title>
     <script src="/vendor/angular.min.js"></script>
     <script src="/scripts/app.js"></script>
     <script src="/scripts/controllers/hero-controller.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="/vendor/normalize.css" />
     <link rel="stylesheet" href="/vendor/skeleton.css" />
- <!--    <link rel="stylesheet" href="/styles/stylesheet.css" /> -->
   </head>
   <body ng-app="heroApp">
     <main class="container" ng-controller="HeroController">
@@ -20,77 +19,75 @@
           <div class="row">
 
             <!-- heros -->
-            <div class="col-md-4">
-              <label for="alias">alias:</label>
+            <div class="col-md-6">
+              <label for="alias">Alias:</label>
               <input type="text" id="currentheroalias" name="alias" ng-model="newHero.alias" />
             </div>
 
-            <div class="col-md-4">
-              <label for="first_name">first name:</label>
+            <div class="col-md-6">
+              <label for="first_name">First name:</label>
               <input type="text" id="currentherofirst_name" name="first_name" ng-model="newHero.first_name" />
             </div>
 
             <div class="col-md-4">
-              <label for="last_name">last name:</label>
+              <label for="last_name">Last name:</label>
               <input type="text" id="currentherolast_name" name="last_name" ng-model="newHero.last_name" />
             </div>
 
-            <!-- Add a publishedBy field to our input form. -->
             <div class="col-md-4">
-              <label for="city">city:</label>
+              <label for="city">City:</label>
               <input type="text" id="currentherocity" name="city" ng-model="newHero.city" />
             </div>
 
-            <div>
+             <div class="col-md-4">
               <label for="power_name">Power Name</label>
-                <select id="power_name" ng-options="superpower as superpower.power_name for superpower in superpowers track by superpower.id" ng-model="newHero.power_name"">
-                </select>
+               <select ng-model="newHero.power_name"
+        ng-options="value for (power_name, value) in options">
+              </select>
             </div>
-
-              
+    
               <button ng-click="submitNewHero()">Submit</button>
-            </div>
           </div>
         </form>
       </section>
       <!-- See submitted heros -->
       <section id="heros" class="row">
-        <h2>hero Listing</h2>
+        <h2>Hero Listing</h2>
         <div>
           <label for="orderby">Order By</label>
           <select name="orderby" id="orderby" ng-model="OrderBySelect">
-            <option value="title">Ascend</option>
+            <option value="alias">Ascend</option>
             <option value="reverse">Descend</option>
           </select>
         </div>
         <div id="heroList" ng-repeat="hero in heros | orderBy:OrderBySelect:direction">
          
             <div class="col-md-4">
-              <label for="alias">alias:</label>
+              <label for="alias">Alias:</label>
               <input type="text" id="alias" name="alias" ng-model="hero.alias" />
             </div>
 
             <div class="col-md-4">
-              <label for="first_name">first name:</label>
+              <label for="first_name">First name:</label>
               <input type="text" id="first_name" name="first_name" ng-model="hero.first_name"/>
             </div>
             
             <div class="col-md-4">
-              <label for="last_name">last name:</label>
+              <label for="last_name">Last name:</label>
               <input type="text" id="last_name" name="last_name" ng-model="hero.last_name"/>
             </div>
 
             <div class="col-md-4">
-              <label for="city">city:</label>
+              <label for="city">City:</label>
               <input type="text" id="city" name="city" ng-model="hero.city"/>
             </div>
             
             <div class="col-md-4">
-              <label for="power_name">power name:</label>
+              <label for="power_name">Power name:</label>
               <input type="text" id="power_name" name="power_name" ng-model="hero.power_name"/>
             </div>
 
-            <div class="six columns">
+            <div class="col-md-12">
 
               <button class="delete" ng-click="deletehero(hero._id)">Delete</button>
 
